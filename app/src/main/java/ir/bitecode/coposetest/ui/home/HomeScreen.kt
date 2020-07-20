@@ -3,10 +3,12 @@ package ir.bitecode.coposetest.ui.home
 import androidx.compose.Composable
 import androidx.ui.core.ContentScale
 import androidx.ui.core.Modifier
+import androidx.ui.core.clip
 import androidx.ui.core.drawShadow
 import androidx.ui.foundation.Image
 import androidx.ui.foundation.Text
 import androidx.ui.foundation.VerticalScroller
+import androidx.ui.foundation.shape.corner.RoundedCornerShape
 import androidx.ui.graphics.Color
 import androidx.ui.graphics.RectangleShape
 import androidx.ui.layout.*
@@ -40,6 +42,8 @@ fun HomeScreen(
         ProductModel("dragon ball 2", 110, R.drawable.product_6)
     )
 
+    val imageModifier = Modifier.clip(RoundedCornerShape(10.dp)).fillMaxWidth()
+
 
     VerticalScroller {
         result.forEach { product ->
@@ -52,10 +56,11 @@ fun HomeScreen(
                     Text(text = product.name, modifier = Modifier.padding(14.dp))
 
                 }
-            Image(
-                imageResource(id = product.imageResource),
-                contentScale = ContentScale.Crop
-            )
+                Image(
+                    imageResource(id = product.imageResource),
+                    contentScale = ContentScale.Crop,
+                    modifier = imageModifier
+                )
                 Text(
                     text = product.quantity.toString(), style = typography.h6
                 )
