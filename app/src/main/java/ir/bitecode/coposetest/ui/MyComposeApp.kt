@@ -1,10 +1,11 @@
-package ir.bitecode.coposetest
+package ir.bitecode.coposetest.ui
 
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.Composable
 import androidx.compose.state
-import androidx.ui.core.*
+import androidx.ui.core.ContentScale
+import androidx.ui.core.Modifier
+import androidx.ui.core.clip
+import androidx.ui.core.drawShadow
 import androidx.ui.foundation.Image
 import androidx.ui.foundation.Text
 import androidx.ui.foundation.VerticalScroller
@@ -16,18 +17,18 @@ import androidx.ui.material.*
 import androidx.ui.res.imageResource
 import androidx.ui.tooling.preview.Preview
 import androidx.ui.unit.dp
-import ir.bitecode.coposetest.ui.ComposeTestTheme
-import ir.bitecode.coposetest.ui.typography
+import ir.bitecode.coposetest.R
+import ir.bitecode.coposetest.data.AppContainer
+import ir.bitecode.coposetest.ui.home.HomeScreen
 
-class MainActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContent {
-            ComposeTestTheme {
-                Greeting("Android")
-                mahdisTest()
-            }
-        }
+
+@Composable
+fun StartMyApp(appContainer: AppContainer){
+    ComposeTestTheme {
+        Greeting("Android")
+//        mahdisTest()
+        HomeScreen(productRepository = appContainer.productRepository)
+
     }
 }
 
